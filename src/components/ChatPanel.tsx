@@ -3,25 +3,25 @@ import { useState, useEffect, useRef } from "react"
 import { useUIStore } from "@/lib/ui-store"
 import { Button } from "@/components/ui/button"
 
-const QUICK_CHIPS = ["Кто ты?", "Покажи арт", "Над чем работаешь?"]
+const QUICK_CHIPS = ["Что за софт?", "Скачать для Windows", "Версия для Android"]
 
 const RESPONSES: Record<string, string> = {
-  "Кто ты?": "Я AI-помощник Алекса! Помогаю показать работы и рассказать о нем. Хочешь узнать больше?",
-  "Покажи арт":
-    "С удовольствием покажу работы Алекса! В них сочетаются цифровые и традиционные техники.",
-  "Над чем работаешь?":
-    "Сейчас в работе несколько проектов! Алекс занимается AI-приложениями и креативным кодингом.",
+  "Что за софт?": "Мы разрабатываем профессиональное ПО для Windows и Android. Хочешь узнать подробнее?",
+  "Скачать для Windows":
+    "Наше ПО поддерживает Windows 10/11. Откройте раздел «Загрузки» для скачивания!",
+  "Версия для Android":
+    "Приложение доступно на Android 8.0 и выше. Откройте раздел «Загрузки» для подробностей!",
 }
 
 const ACTION_RESPONSES: Record<string, { response: string; action: string }> = {
-  "открой арт": { response: "Открываю галерею!", action: "art" },
-  "покажи арт": { response: "Открываю раздел с артом!", action: "art" },
-  "открой резюме": { response: "Открываю резюме!", action: "resume" },
-  "покажи резюме": { response: "Вот резюме!", action: "resume" },
-  "открой обо мне": { response: "Открываю раздел обо мне!", action: "about" },
-  "покажи обо мне": { response: "Расскажу об Алексе!", action: "about" },
-  "открой статьи": { response: "Открываю статьи!", action: "writings" },
-  "покажи статьи": { response: "Вот статьи!", action: "writings" },
+  "открой скриншоты": { response: "Открываю скриншоты!", action: "art" },
+  "покажи скриншоты": { response: "Вот скриншоты приложения!", action: "art" },
+  "открой загрузки": { response: "Открываю раздел загрузок!", action: "resume" },
+  "покажи загрузки": { response: "Открываю раздел загрузок!", action: "resume" },
+  "открой о продукте": { response: "Открываю раздел о продукте!", action: "about" },
+  "покажи о продукте": { response: "Расскажу о нашем ПО!", action: "about" },
+  "открой возможности": { response: "Открываю список возможностей!", action: "writings" },
+  "покажи возможности": { response: "Вот что умеет наше ПО!", action: "writings" },
 }
 
 type AppType = "about" | "resume" | "writings" | "art"
@@ -62,7 +62,7 @@ export function ChatPanel() {
     } else {
       // Default response for non-action messages
       const defaultResponse =
-        "Интересно! Я помогу изучить работы Алекса. Попробуй написать «открой арт» или «покажи резюме»!"
+        "Интересно! Попробуй написать «открой о продукте», «покажи возможности» или «открой загрузки»!"
       setMessages((prev) => [...prev, { text: userMessage, isUser: true }, { text: defaultResponse, isUser: false }])
     }
   }
